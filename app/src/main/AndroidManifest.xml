@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="moziqi.te" >
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <user-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="org.moziqi.util.GeneralApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".InitActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".TabActivity"
+            android:label="@string/title_activity_tab" />
+        <activity
+            android:name=".ItemListActivity"
+            android:label="@string/title_item_list" />
+        <activity
+            android:name=".ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".ItemListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="moziqi.te.ItemListActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".DrawerActivity"
+            android:label="@string/title_activity_drawer" />
+        <activity
+            android:name="org.moziqi.activity.AHomeActivity"
+            android:label="@string/title_activity_ahome" >
+
+        </activity>
+        <activity
+            android:name="org.moziqi.activity.ResultActivity"
+            android:parentActivityName="org.moziqi.activity.AHomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.moziqi.activity.AHomeActivity" />
+        </activity>
+        <activity
+            android:name="org.moziqi.activity.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name="org.moziqi.activity.MainActivity"
+            android:label="@string/title_activity_main" />
+
+        <receiver
+            android:name="org.moziqi.recevier.MyReceiverOne"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.mzq.action.NEW_LIFEFORM" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="org.moziqi.activity.MainHomeActivity"
+            android:label="@string/title_activity_main_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

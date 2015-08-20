@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="main_btn_style">
+        <item name="android:button">@null</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:background">@drawable/fragment_bottom_selector</item>
+    </style>
+
+    <style name="textColorStyle">
+        <item name="android:textColor">@color/floralWhite</item>
+    </style>
+
+    <style name="Text12SizeWithColorStyle" parent="textColorStyle">
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Text14SizeWithColorStyle" parent="textColorStyle">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Text16SizeWithColorStyle" parent="textColorStyle">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Text18SizeWithColorStyle" parent="textColorStyle">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Text20SizeWithColorStyle" parent="textColorStyle">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="main_rb_style" parent="Text12SizeWithColorStyle">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">0dp</item>
+    </style>
+
+    <style name="top_btn_style">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">@dimen/abc_action_button_min_width</item>
+        <item name="android:background">@drawable/view_top_button_selector</item>
+    </style>
+</resources>

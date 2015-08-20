@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Te</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_ahome">AHomeActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">主页</string>
+    <string name="write">发表</string>
+    <string name="msg">信息</string>
+    <string name="more">更多</string>
+    <string name="firstPage">第一个page页面</string>
+    <string name="secondPage">第二个page页面</string>
+    <string name="thirdPage">第三个page页面</string>
+    <string name="tv_cuiyicui">对屏幕吹一下</string>
+    <string name="btn_cuiyicui">点击我，然后对屏幕吹一下</string>
+    <string name="cardinal_north">N</string>
+    <string name="cardinal_east">E</string>
+    <string name="cardinal_south">S</string>
+    <string name="cardinal_west">W</string>
+
+    <array name="homePageName">
+        <item>吹一吹</item>
+        <item>吹一吹</item>
+        <item>吹一吹</item>
+    </array>
+
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main_home">MainHomeActivity</string>
+
+</resources>

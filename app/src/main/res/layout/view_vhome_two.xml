@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/burlyWood"
+    android:orientation="vertical">
+
+    <org.moziqi.ui.TextView.ToDoListItemView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fadingEdge="vertical"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        android:text="@string/hello_world"
+        android:textColor="@color/cadetBlue" />
+
+    <!--<org.moziqi.ui.View.DrawView-->
+        <!--android:padding="16dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <org.moziqi.ui.View.CompassView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

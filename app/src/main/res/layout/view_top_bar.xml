@@ -1,0 +1,32 @@
+<merge>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_button_min_width"
+        android:background="#ed4255">
+
+
+        <TextView
+            android:id="@+id/top_title"
+            style="@style/Text18SizeWithColorStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="标题" />
+
+        <Button
+            android:id="@+id/top_left_btn"
+            style="@style/top_btn_style"
+            android:layout_toLeftOf="@+id/top_right_btn"
+            android:drawableLeft="@drawable/left" />
+
+        <Button
+            android:id="@+id/top_right_btn"
+            style="@style/top_btn_style"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/left" />
+    </RelativeLayout>
+</merge>
+

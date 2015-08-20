@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.moziqi.activity.MainHomeActivity">
+
+    <include layout="@layout/view_top_bar" />
+
+    <FrameLayout
+        android:id="@+id/fl_main_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999fff" />
+
+
+    <RadioGroup
+        android:id="@+id/rg_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#999999"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <RadioButton
+            android:id="@+id/rb_one"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/view_bottom_bar_icon_game_selector"
+            android:text="@string/more" />
+
+        <RadioButton
+            android:id="@+id/rb_two"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/view_bottom_bar_icon_game_selector"
+            android:text="@string/more" />
+
+        <RadioButton
+            android:id="@+id/rb_three"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/view_bottom_bar_icon_game_selector"
+            android:text="@string/more" />
+    </RadioGroup>
+
+</LinearLayout>
