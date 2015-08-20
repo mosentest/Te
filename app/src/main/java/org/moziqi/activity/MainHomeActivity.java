@@ -3,22 +3,38 @@ package org.moziqi.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import org.moziqi.fragment.BlankHome2Fragment;
 import org.moziqi.fragment.BlankHome3Fragment;
 import org.moziqi.fragment.BlankHomeFragment;
+import org.moziqi.ui.PopupWindow.MainMenuPopupWindow;
+import org.moziqi.ui.PopupWindow.SelectPicPopupWindow;
+import org.moziqi.ui.PopupWindow.entity.MainMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import moziqi.te.R;
 
-public class MainHomeActivity extends GeneralHave2BtnActivity implements RadioGroup.OnCheckedChangeListener, GeneralHave2BtnActivity.TopListener {
+public class MainHomeActivity extends GeneralHave2BtnActivity implements
+        RadioGroup.OnCheckedChangeListener,
+        GeneralHave2BtnActivity.TopListener,
+        SelectPicPopupWindow.SelectListener,
+        MainMenuPopupWindow.MainMenuItemListener {
+
     private BlankHomeFragment mBlankHomeFragment;
     private BlankHome2Fragment mBlankHome2Fragment;
     private BlankHome3Fragment mBlankHome3Fragment;
     private FragmentManager supportFragmentManager;
+    private SelectPicPopupWindow mSelectPicPopupWindow;
+    private MainMenuPopupWindow mainMenuPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +45,42 @@ public class MainHomeActivity extends GeneralHave2BtnActivity implements RadioGr
         ((RadioButton) findViewById(R.id.rb_one)).setChecked(true);
         setFragmentSelect(R.id.rb_one);
         setTopListener(this);
+        mSelectPicPopupWindow = new SelectPicPopupWindow(this);
+        mSelectPicPopupWindow.setSelectListener(this);
+        List<MainMenu> mainMenus = getMainMenus();
+        mainMenuPopupWindow = new MainMenuPopupWindow(this, mainMenus);
+        mainMenuPopupWindow.setListener(this);
+    }
+
+    private List<MainMenu> getMainMenus() {
+        //设置菜单内容
+        List<MainMenu> mainMenus = new ArrayList<MainMenu>();
+        MainMenu mainMenu1 = new MainMenu();
+        mainMenu1.setContent("设置菜单内容1");
+        mainMenu1.setImgId(R.drawable.ic_action_accept);
+        mainMenus.add(mainMenu1);
+        MainMenu mainMenu2 = new MainMenu();
+        mainMenu2.setContent("设置菜单内容2");
+        mainMenu2.setImgId(R.drawable.ic_action_accounts);
+        mainMenus.add(mainMenu2);
+        MainMenu mainMenu3 = new MainMenu();
+        mainMenu3.setContent("设置菜单内容3");
+        mainMenu3.setImgId(R.drawable.ic_action_person);
+        mainMenus.add(mainMenu3);
+        MainMenu mainMenu4 = new MainMenu();
+        mainMenu4.setContent("设置菜单内容4");
+        mainMenu4.setImgId(R.drawable.ic_action_accept);
+        mainMenus.add(mainMenu4);
+        MainMenu mainMenu5 = new MainMenu();
+        mainMenu5.setContent("设置菜单内容5");
+        mainMenu5.setImgId(R.drawable.ic_action_accept);
+        mainMenus.add(mainMenu5);
+        return mainMenus;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -103,11 +134,31 @@ public class MainHomeActivity extends GeneralHave2BtnActivity implements RadioGr
 
     @Override
     public void setTopRightBtnListener() {
-        showShortToast("right");
+        if (mainMenuPopupWindow.isShowing()) {
+            mainMenuPopupWindow.dismiss();
+        } else {
+            mainMenuPopupWindow.showAsDropDown(this.findViewById(R.id.top_right_btn));
+        }
+
     }
 
     @Override
     public void setTopLeftBtnListener() {
-        showShortToast("left");
+        mSelectPicPopupWindow.showAtLocation(this.findViewById(R.id.ll_main_home), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+    }
+
+    @Override
+    public void takePhotoListener() {
+
+    }
+
+    @Override
+    public void pickPhotoListener() {
+
+    }
+
+    @Override
+    public void onItemListener(AdapterView<?> parent, View view, int position, long id) {
+        showShortToast(position + "");
     }
 }

@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -23,7 +24,7 @@
         android:id="@+id/rg_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#999999"
+        android:background="@color/darkGray"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
         android:paddingTop="5dp">

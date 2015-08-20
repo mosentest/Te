@@ -1,9 +1,11 @@
 package org.moziqi.ui.PopupWindow;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import moziqi.te.R;
@@ -19,12 +21,37 @@ public class SelectPicPopupWindow extends PopupWindow implements View.OnClickLis
         super(context);
         LayoutInflater layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View mMenuView = layoutInflater.inflate(R.layout.view_select_pic_popup_window, null);
+        final View mMenuView = layoutInflater.inflate(R.layout.view_select_pic_popup_window, null);
         mMenuView.findViewById(R.id.btn_take_photo).setOnClickListener(this);
         mMenuView.findViewById(R.id.btn_pick_photo).setOnClickListener(this);
         mMenuView.findViewById(R.id.btn_cancel).setOnClickListener(this);
+        mMenuView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int height = mMenuView.findViewById(R.id.ll_top).getTop();
+                int y = (int) event.getY();
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (y < height) {
+                        dismiss();
+                    }
+                }
+                return true;
+            }
+        });
         //设置SelectPicPopupWindow的View
         this.setContentView(mMenuView);
+        //设置SelectPicPopupWindow弹出窗体的宽
+        this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        //设置SelectPicPopupWindow弹出窗体的高
+        this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        //设置SelectPicPopupWindow弹出窗体可点击
+        this.setFocusable(true);
+        // 设置允许在外点击消失(包括back键)
+        this.setOutsideTouchable(true);
+        //实例化一个ColorDrawable颜色为半透明
+        ColorDrawable dw = new ColorDrawable(0xb0000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+        this.setBackgroundDrawable(dw);
     }
 
     @Override
@@ -45,7 +72,7 @@ public class SelectPicPopupWindow extends PopupWindow implements View.OnClickLis
         }
     }
 
-    interface SelectListener {
+    public interface SelectListener {
         public void takePhotoListener();
 
         public void pickPhotoListener();
