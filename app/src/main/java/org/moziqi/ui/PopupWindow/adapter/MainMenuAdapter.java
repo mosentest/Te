@@ -1,7 +1,6 @@
 package org.moziqi.ui.PopupWindow.adapter;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,7 @@ import android.widget.TextView;
 
 import org.moziqi.ui.PopupWindow.entity.MainMenu;
 import org.moziqi.util.DefaultException;
-import org.moziqi.util.GeneralApplication;
 
-import java.security.GeneralSecurityException;
 import java.util.List;
 
 import moziqi.te.R;

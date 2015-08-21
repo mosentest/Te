@@ -58,5 +58,8 @@ public class BlankHome2Fragment extends Fragment {
         return inflater.inflate(R.layout.fragment_blank_home2, container, false);
     }
 
-
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
 }
