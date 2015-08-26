@@ -11,7 +11,6 @@ import android.widget.TextView;
 import org.moziqi.activity.AHomeActivity;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import moziqi.te.R;
 
@@ -26,6 +25,11 @@ public class GeneralFragment extends Fragment implements Serializable {
         return generalFragment == null ? generalFragment = new GeneralFragment() : generalFragment;
     }
 
+
+    public View findById(int id) {
+        return getView().findViewById(id);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,6 @@ public class GeneralFragment extends Fragment implements Serializable {
             if (getArguments().containsKey(AHomeActivity.Item)) ;
             item = getArguments().getInt(AHomeActivity.Item);
         }
-
     }
 
     @Override

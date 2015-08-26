@@ -30,7 +30,7 @@ public class LogUtils {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];
             String tag = getDefaultTag(stackTraceElement);
             //默认日志方式
-            Log.v(tag, getLogInfo(stackTraceElement) + message);
+            Log.v(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -40,7 +40,7 @@ public class LogUtils {
             if (TextUtils.isEmpty(tag)) {
                 tag = getDefaultTag(stackTraceElement);
             }
-            Log.v(tag, getLogInfo(stackTraceElement) + message);
+            Log.v(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -49,7 +49,7 @@ public class LogUtils {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];
             String tag = getDefaultTag(stackTraceElement);
             //默认日志方式
-            Log.d(tag, getLogInfo(stackTraceElement) + message);
+            Log.d(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -59,7 +59,7 @@ public class LogUtils {
             if (TextUtils.isEmpty(tag)) {
                 tag = getDefaultTag(stackTraceElement);
             }
-            Log.d(tag, getLogInfo(stackTraceElement) + message);
+            Log.d(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -68,7 +68,7 @@ public class LogUtils {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];
             String tag = getDefaultTag(stackTraceElement);
             //默认日志方式
-            Log.i(tag, getLogInfo(stackTraceElement) + message);
+            Log.i(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -78,7 +78,7 @@ public class LogUtils {
             if (TextUtils.isEmpty(tag)) {
                 tag = getDefaultTag(stackTraceElement);
             }
-            Log.i(tag, getLogInfo(stackTraceElement) + message);
+            Log.i(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -87,7 +87,7 @@ public class LogUtils {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];
             String tag = getDefaultTag(stackTraceElement);
             //默认日志方式
-            Log.w(tag, getLogInfo(stackTraceElement) + message);
+            Log.w(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -97,7 +97,7 @@ public class LogUtils {
             if (TextUtils.isEmpty(tag)) {
                 tag = getDefaultTag(stackTraceElement);
             }
-            Log.w(tag, getLogInfo(stackTraceElement) + message);
+            Log.w(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -106,7 +106,7 @@ public class LogUtils {
             StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3];
             String tag = getDefaultTag(stackTraceElement);
             //默认日志方式
-            Log.e(tag, getLogInfo(stackTraceElement) + message);
+            Log.e(tag, message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -116,7 +116,7 @@ public class LogUtils {
             if (TextUtils.isEmpty(tag)) {
                 tag = getDefaultTag(stackTraceElement);
             }
-            Log.e(tag, getLogInfo(stackTraceElement) + message);
+            Log.e(tag,  message+getLogInfo(stackTraceElement));
         }
     }
 
@@ -143,9 +143,9 @@ public class LogUtils {
         // 获取输出行数
         int lineNumber = stackTraceElement.getLineNumber();
         logInfoStringBuilder.append("[currentTime=" + date).append(SEPARATOR);
-        logInfoStringBuilder.append("threadID=" + threadID).append(SEPARATOR);
-        logInfoStringBuilder.append("threadName=" + threadName).append(SEPARATOR);
-        logInfoStringBuilder.append("fileName=" + fileName).append(SEPARATOR);
+//        logInfoStringBuilder.append("threadID=" + threadID).append(SEPARATOR);
+//        logInfoStringBuilder.append("threadName=" + threadName).append(SEPARATOR);
+//        logInfoStringBuilder.append("fileName=" + fileName).append(SEPARATOR);
         logInfoStringBuilder.append("className=" + className).append(SEPARATOR);
         logInfoStringBuilder.append("methodName=" + methodName).append(SEPARATOR);
         logInfoStringBuilder.append("lineNumber=" + lineNumber);

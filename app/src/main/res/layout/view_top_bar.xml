@@ -1,9 +1,9 @@
-<merge>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:id="@+id/layout_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/abc_action_button_min_width"
+        android:layout_height="@dimen/abc_action_button_min_height_material"
         android:background="#ed4255">
 
 

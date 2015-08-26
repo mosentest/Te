@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="moziqi.te" >
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -42,7 +49,6 @@
         <activity
             android:name="org.moziqi.activity.AHomeActivity"
             android:label="@string/title_activity_ahome" >
-
         </activity>
         <activity
             android:name="org.moziqi.activity.ResultActivity"

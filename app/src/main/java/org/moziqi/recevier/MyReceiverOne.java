@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MyReceiverOne extends BroadcastReceiver {
@@ -16,13 +17,15 @@ public class MyReceiverOne extends BroadcastReceiver {
     public static final String NEW_LIFEFORM = "com.mzq.action.NEW_LIFEFORM";
 
     public MyReceiverOne() {
+        Log.e("MyReceiverOne","MyReceiverOne");
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         //更新内容，启动service，更新activity UI或者使用Notification Manager
+//        android.R.style.Theme
         Toast.makeText(context, "receiver", Toast.LENGTH_SHORT).show();
-
+        Log.e("MyReceiverOne","onReceive");
         Uri data = intent.getData();
         String type = intent.getStringExtra(EXTRA_LIFEFORM_NAME);
         double lat = intent.getDoubleExtra(EXTRA_LATITUDE, 0);

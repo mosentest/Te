@@ -1,12 +1,16 @@
 package org.moziqi.activity;
 
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,6 +21,7 @@ import org.moziqi.fragment.BlankHomeFragment;
 import org.moziqi.ui.PopupWindow.MainMenuPopupWindow;
 import org.moziqi.ui.PopupWindow.SelectPicPopupWindow;
 import org.moziqi.ui.PopupWindow.entity.MainMenu;
+import org.moziqi.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,7 +149,23 @@ public class MainHomeActivity extends GeneralHave2BtnActivity implements
 
     @Override
     public void setTopLeftBtnListener() {
-        mSelectPicPopupWindow.showAtLocation(this.findViewById(R.id.ll_main_home), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        if(mSelectPicPopupWindow.isShowing()){
+            mSelectPicPopupWindow.dismiss();
+        }else{
+            // 获取屏幕密度（方法1）
+            int screenWidth  = getWindowManager().getDefaultDisplay().getWidth();       // 屏幕宽（像素，如：480px）
+            int screenHeight = getWindowManager().getDefaultDisplay().getHeight();      // 屏幕高（像素，如：800p）
+            LogUtils.e(screenWidth+"-"+screenHeight);
+            Rect frame = new Rect();//创建一个空的矩形对象
+            getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);//获得顶层窗口的装饰视图，即状态栏，然后把状态栏显示的框架填充给刚刚我们创建的矩形对象，再通过矩形对象来获取状态栏高度
+            int statusBarHeight = frame.height();// 获取状态栏高度：frame.top
+            int statusBarWidth = frame.width();
+            LogUtils.e(statusBarHeight + "---"+statusBarWidth);//打印出来的值为：38，即状态栏高度为38px
+            View v = getWindow().findViewById(Window.ID_ANDROID_CONTENT);// /获得根视图，
+            int allHeight = v.getTop();// 状态栏和标题栏的总高度
+            LogUtils.e(allHeight + "");//打印出来的值为：38，即状态栏高度为38px
+            mSelectPicPopupWindow.showAtLocation(this.findViewById(R.id.ll_main_home), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, statusBarWidth, statusBarHeight);
+        }
     }
 
     @Override
