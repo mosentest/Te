@@ -75,5 +75,4 @@ public class BlankHomeFragment extends Fragment {
         return rootView;
     }
 
-
 }

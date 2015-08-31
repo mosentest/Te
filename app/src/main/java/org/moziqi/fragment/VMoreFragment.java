@@ -1,6 +1,9 @@
 package org.moziqi.fragment;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.moziqi.recevier.MyReceiverOne;
+import org.moziqi.service.TimeService;
 
 import moziqi.te.R;
 
@@ -23,12 +27,18 @@ import moziqi.te.R;
 public class VMoreFragment extends GeneralFragment implements View.OnClickListener {
 
 
+    public static final String TIME_CHANGED_ACTION = "com.mo.TIME_CHANGED_ACTION";
     private static VMoreFragment fragment = null;
 
     private MyReceiverOne myReceiverOne;
     private IntentFilter filter;
+
     private TextView mTextView;
     private Button mButton;
+
+    private Intent timeService;
+    private UITimeReceiver uiTimeReceiver;
+    private IntentFilter intentFilter;
 
     public static GeneralFragment getInstance() {
         return fragment == null ? fragment = new VMoreFragment() : fragment;
@@ -55,11 +65,25 @@ public class VMoreFragment extends GeneralFragment implements View.OnClickListen
         mTextView = (TextView) findById(R.id.time);
         mButton = (Button) findById(R.id.btn);
         mButton.setOnClickListener(this);
+
+        registerBroadcastReceiver();
+        startTimeService();
+    }
+
+    private void startTimeService() {
+        timeService = new Intent(getActivity(), TimeService.class);
+        getActivity().startService(timeService);
+    }
+
+    private void registerBroadcastReceiver() {
+        uiTimeReceiver = new UITimeReceiver();
+        intentFilter = new IntentFilter(TIME_CHANGED_ACTION);
+        getActivity().registerReceiver(uiTimeReceiver, intentFilter);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        //super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -85,6 +109,8 @@ public class VMoreFragment extends GeneralFragment implements View.OnClickListen
     public void onDestroy() {
         super.onDestroy();
         Log.e(VMoreFragment.class.getName(), "onDestroy");
+        getActivity().unregisterReceiver(uiTimeReceiver);
+        getActivity().stopService(timeService);
     }
 
 
@@ -92,10 +118,22 @@ public class VMoreFragment extends GeneralFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn:
-                Toast.makeText(getActivity(),"---",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "---", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
+        }
+    }
+
+    class UITimeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (VMoreFragment.TIME_CHANGED_ACTION.equals(action)) {
+                Bundle bundle = intent.getExtras();
+                String strTime = bundle.getString("time");
+                mTextView.setText(strTime);
+            }
         }
     }
 }
